@@ -14,25 +14,25 @@
 <!-- NAVBAR -->
   <header>
     <nav class="navbar">
-      <h1 class="logo" data-i18n="header">Noah Trane's Website</h1>
+      <h1 class="logo" data-i18n="header"></h1>
 
       <ul class="nav-links">
         
-        <li><a data-i18n="Coding-projects"></a></li>
-        <li><a data-i18n="Research"></a></li>
-        <li><a data-i18n="Experience"></a></li>
-        <li><a data-i18n="Electronics"></a></li>
+        <li><a href="progress.html" data-i18n="Coding-projects"></a></li>
+        <li><a href="progress.html" data-i18n="Research"></a></li>
+        <li><a href="progress.html" data-i18n="Experience"></a></li>
+        <li><a href="progress.html" data-i18n="Electronics"></a></li>
         <li><a data-i18n="CV" href="CV.pdf" target="_blank"></a></li>
-        <li><a data-i18n="Contact""></a></li>
+        <li><a href="progress.html" data-i18n="Contact""></a></li>
         <li class="dropdown">
             <button class="drop-btn">
              <p data-i18n="More"></p> <span class="arrow">▼</span>
             </button>
             <ul class="drop-menu">
-                <li><a data-i18n="Personal"></a></li>
-                <li><a href="#hobby">Hobbies</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#random">Random Stuff</a></li>
+                <li><a href="progress.html" data-i18n="Personal"></a></li>
+                <li><a href="progress.html">Hobbies</a></li>
+                <li><a href="progress.html">Blog</a></li>
+                <li><a href="progress.html">Random Stuff</a></li>
                 <li><a data-i18n="contact"></a></li>
               <li><a href="donations.html" data-i18n="donations"></a></li>
             </ul>
@@ -77,33 +77,38 @@
 
     <!-- ABOUT ME -->
     <section id="about">
-      <h2 data-i18n="about_title">About Me</h2>
-      <p data-i18n="about"> bio </p>
+      <h2 data-i18n="about_title"></h2>
+      <p data-i18n="about"></p>
     </section>
 
 
     <!-- CODING PROJECTS -->
     <section id="projects" class="projects">
-      <h2 data-i18n="coding_title">Examples of my coding projects</h2>
+      <h2 data-i18n="coding_title"></h2>
 
       <div class="project-scroll">
-        <div class="project-card">
+        <a href="https://github.com/noahtrane/Basketball-game" target="_blank" class="project-card">
           <img src="basketball2.png" alt="MATLAB Game Screenshot">
           <h3 data-i18n="basketball_title"></h3>
           <p data-i18n="basketball"></p>
-        </div>
+        </a>
 
-        <div class="project-card">
-          <img src="spotify.jpg" alt="Poker">
+
+
+        <a href="https://github.com/noahtrane/Spotify-wrapped" class="project-card" target="_blank">
+          <img src="spotify.jpg" alt="Spotify project screenshot">
           <h3 data-i18n="spotify_title"></h3>
           <p data-i18n="spotify"></p>
-        </div>
+        </a>
 
-        <div class="project-card">
+         
+
+        <a href="https://github.com/noahtrane" target="_blank" class="project-card">
           <img src="poker.jpg" alt="Placeholder">
           <h3 data-i18n="and-more-title"></h3>
           <p data-i18n="and-more"></p>
-        </div>
+        </a>
+
 
 
 
@@ -113,7 +118,7 @@
 
 
   <section id="contact" class="contact">
-    <h2>Contact Me</h2>
+    <h2 data-i18n-placeholder="contact"> </h2>
     
     <form class="contact-form" action="mailto:noah.trane.contact@gmail.com" method="post" enctype="text/plain">
       <div class="form-row">

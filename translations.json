@@ -30,7 +30,7 @@
 
 
     "_____comment": "CONTACT",
-    "contact": "Contact",
+    "contact": "Contact Me",
     "placeholder_name": "Your Name *",
     "placeholder_email": "Your Email *",
     "placeholder_phone": "Your Phone",
@@ -40,10 +40,13 @@
     "about_title": "About me",
     "about": "Hello, I'm Noah Trane, an engineering student at the University of Oxford, with a passion for electronics, software, robotics, machine learning and more stuff around that domain. I'm motivated by curiosity and the excitement of building things that matter. Right now, I’m looking for opportunities to grow through internships and collaborations where I can apply my skills and learn from real-world challenges. Outside of my academic and coding work, you’ll often find me playing football, the piano or rockclimbing among other things.  ",
     
+    "coming_soon_title": "Coming Soon!",
+    "coming_soon_text": "This is a new site and I’m adding content regularly. Please check back soon! In the meantime, feel free to check out my projects on GitHub, get in touch further down the page, or play the game below.",
 
     "coding_title": "Examples of my coding projects"
   },
   "fr": {
+
     "__comment": "NAVBAR",
 
     "header": "Le Site de Noé Trane",
@@ -77,7 +80,7 @@
     
 
     "_____comment": "CONTACT",
-    "contact": "Contact",
+    "contact": "Conactez-moi",
     "placeholder_contact": "Contact",
     "placeholder_name": "Votre nom *",
     "placeholder_email": "Votre e-mail *",
@@ -86,6 +89,8 @@
     "send": "Envoyer",
 
 
+    "coming_soon_title": "Bientôt disponible !",
+    "coming_soon_text": "Ceci est un nouveau site et j’ajoute du contenu régulièrement. Revenez bientôt ! En attendant, vous pouvez consulter mes projets sur GitHub, me contacter plus bas sur la page, ou jouer au jeu ci-dessous.",
 
     "coding_title": "Exemples de mes projets de codage"
   }
