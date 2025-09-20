@@ -1,0 +1,92 @@
+{
+  "en": {
+    "__comment": "NAVBAR",
+
+    "header": "Noah Trane's Website",
+    "Coding-projects": "Coding Projects",
+    "Research": "Research",
+    "Experience": "Experience",
+    "Personal": "Personal Page",
+    "Electronics": "Electronic Projects",
+    "CV": "Resume",
+    "More": "More",
+
+
+    "___comment": "DROPDOWN MENU",
+    
+
+
+    "____comment": "CODING PROJECTS",
+    "projects": "Projects",
+
+    "basketball_title": "Basketball Game",
+    "basketball": "A 1v1 interactive basketball game created entirely in MATLAB",
+
+    "spotify_title": "Spotify API",
+    "spotify": "A Spotify API code which can tell you your most listened to songs in the short, medium and long term",
+
+    "and-more-title": "And more to be seen by clicking here or visiting my Github!",
+    "and-more": "Inclduing mathematical algorithms, pyshics-based simulation...",
+
+
+    "_____comment": "CONTACT",
+    "contact": "Contact",
+    "placeholder_name": "Your Name *",
+    "placeholder_email": "Your Email *",
+    "placeholder_phone": "Your Phone",
+    "placeholder_message": "Your Message *",
+    "send": "Send Message",
+
+    "about_title": "About me",
+    "about": "Hello, I'm Noah Trane, an engineering student at the University of Oxford, with a passion for electronics, software, robotics, machine learning and more stuff around that domain. I'm motivated by curiosity and the excitement of building things that matter. Right now, I’m looking for opportunities to grow through internships and collaborations where I can apply my skills and learn from real-world challenges. Outside of my academic and coding work, you’ll often find me playing football, the piano or rockclimbing among other things.  ",
+    
+
+    "coding_title": "Examples of my coding projects"
+  },
+  "fr": {
+    "__comment": "NAVBAR",
+
+    "header": "Le Site de Noé Trane",
+    "Coding-projects": "Mon Codage",
+    "Research": "Recherche",
+    "Experience": "Expérience",
+    "Personal": "Page Personelle",
+    "Electronics": "Projets Électroniques",
+    "CV": "Mon CV",
+    "More": "Autre",
+    
+
+    "___comment": "DROPDOWN MENU",
+
+
+    "____comment": "CODING PROJECTS",
+    "projects": "Projets",
+
+    "basketball_title": "Jeu de basket-ball",
+    "basketball": "Un jeu de basket-ball interactif 1 contre 1 entièrement créé dans MATLAB",
+
+    "spotify_title": "API Spotify",
+    "spotify": "Un code API Spotify qui peut vous indiquer vos chansons les plus écoutées à court, moyen et long terme",
+
+    "and-more-title": "Et plus à voir en cliquant ici ou en visitant mon Github !",
+    "and-more": "Y compris des algorithmes mathématiques, une simulation basée sur la physique...",
+
+    
+    "about_title": "À propos de moi",
+    "about": "Bonjour, je m'appelle Noé Trane et je suis étudiant en ingénierie à l'Université d'Oxford. Passionné d'électronique, de logiciels, de robotique, d'apprentissage automatique et de tout ce qui touche à ces domaines, je suis animé par la curiosité et l'enthousiasme de construire des objets qui comptent. Je recherche actuellement des opportunités de développement personnel grâce à des stages et des collaborations qui me permettront de mettre mes compétences à profit et d'apprendre des défis du monde réel. En dehors de mes études et de mon travail de codeur, vous me trouverez souvent en train de jouer au football, au piano ou à l'escalade, entre autres.",
+    
+
+    "_____comment": "CONTACT",
+    "contact": "Contact",
+    "placeholder_contact": "Contact",
+    "placeholder_name": "Votre nom *",
+    "placeholder_email": "Votre e-mail *",
+    "placeholder_phone": "Votre téléphone",
+    "placeholder_message": "Votre message *",
+    "send": "Envoyer",
+
+
+
+    "coding_title": "Exemples de mes projets de codage"
+  }
+}
