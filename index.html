@@ -149,9 +149,37 @@
       </a>
       <a href="https://www.instagram.com/noah_trane/" target="_blank">
         <img src="instagram.png" alt="Instagram">
+      </a>
     </div>
   </section>
 
+
+  <!-- Business Card Widget -->
+  <div class="card-overlay"></div>
+
+  <div class="card-container" id="cardContainer">
+    <div class="card">
+      <!-- FRONT (blank white side) -->
+      <div class="card-face card-front">
+        <h2 data-i18n="name"></h2>
+        <p data-i18n="bio"></p>
+      <ul class="contact-list">
+      <li data-i18n="address"></li>
+      <li><a href="mailto:noah.trane.contact@gmail.com">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/noahtrane" target="_blank">LinkedIn</a></li>
+      <li><a href="https://github.com/noahtrane" target="_blank">GitHub</a></li>
+      <li><a href="https://www.instagram.com/noah_trane/" target="_blank">Instagram</a></li>
+      <li><a href="CV.pdf" target="_blank">View Resume</a></li>
+    </ul>
+      </div>
+
+      <!-- BACK (info side) -->
+  <div class="card-face card-back">
+
+
+
+    <p class="tagline">“Creative coder & problem solver.”</p>
+  </div>
 
 
 
@@ -281,5 +309,34 @@ loadTranslations(defaultLang);
 // also update the main flag when loading
 mainFlag.src = defaultLang === "en" ? "uk.png" : "france.png";
 mainFlag.alt = defaultLang === "en" ? "UK" : "France";
+
+
+const cardContainer = document.getElementById("cardContainer");
+const card = cardContainer.querySelector(".card");
+const overlay = document.querySelector(".card-overlay");
+
+cardContainer.addEventListener("click", (e) => {
+  // ✅ don’t flip if a link (or child of link) is clicked
+  if (e.target.tagName === "A") {
+    return;
+  }
+
+  if (!cardContainer.classList.contains("open")) {
+    cardContainer.classList.add("open");
+    overlay.classList.add("active");
+  } else if (!card.classList.contains("flipped")) {
+    card.classList.add("flipped");
+  } else {
+    card.classList.remove("flipped");
+  }
+});
+
+// Close when clicking outside card
+overlay.addEventListener("click", () => {
+  cardContainer.classList.remove("open");
+  card.classList.remove("flipped");
+  overlay.classList.remove("active");
+});
+
 </script>
 

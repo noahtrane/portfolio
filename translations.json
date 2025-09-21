@@ -43,6 +43,15 @@
     "coming_soon_title": "Coming Soon!",
     "coming_soon_text": "This is a new site and I’m adding content regularly. Please check back soon! In the meantime, feel free to check out my projects on GitHub, get in touch further down the page, or play the game below.",
 
+
+    "______comment": "BUISNESS CARD",
+    "name": "Noah Trane",
+    "bio": "Engineering Student | University of Oxford",
+    "address": "St John's College, Oxford, United Kingdom",
+    "phone": "+353 87 912 0617",
+
+
+
     "coding_title": "Examples of my coding projects"
   },
   "fr": {
@@ -91,6 +100,13 @@
 
     "coming_soon_title": "Bientôt disponible !",
     "coming_soon_text": "Ceci est un nouveau site et j’ajoute du contenu régulièrement. Revenez bientôt ! En attendant, vous pouvez consulter mes projets sur GitHub, me contacter plus bas sur la page, ou jouer au jeu ci-dessous.",
+
+
+    "______comment": "BUISNESS CARD",
+    "name": "Noé Trane",
+    "bio": "Étudiant en ingénierie | Université d'Oxford",
+    "address": "Collège St John, Oxford, Royaume-Uni",
+    "phone": "+353 87 912 0617",
 
     "coding_title": "Exemples de mes projets de codage"
   }

@@ -452,21 +452,182 @@ input, textarea, button {
   .form-right { flex: 2; }
   .form-left { flex: 1; }
 
-    .drop-menu {
-    position: absolute;
-    top: 120%;
-    left: 0;
-    background: #121212;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    min-width: 160px;
-    padding: 0.5rem 0;
-    display: none; /* default hidden */
-  }
+  .drop-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #121212;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  min-width: 160px;
+  padding: 0.5rem 0;
+  display: none; /* default hidden */
+}
 
   .drop-menu.show {
     display: block;
   }
+/* ====== BUSINESS CARD WIDGET (MINIMAL) ====== */
+
+/* overlay */
+.card-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+.card-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* container */
+.card-container {
+  position: fixed;
+  bottom: -250px; /* push further down */
+  right: -380px;  /* push further left */
+  width: 525px;
+  height: 300px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: right 0.6s ease, bottom 0.6s ease, transform 0.6s ease;
+}
+
+
+/* open = slide into center */
+.card-container.open {
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+}
+
+/* card */
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  background: #fff;
+  border-radius: 0; /* square corners */
+  border-radius: 12px;
+}
+
+/* flip state */
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* faces */
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+/* front = blank white */
+.card-front {
+  background: url("radcam.png");
+  background-repeat: no-repeat;         /* don’t repeat */
+  background-position: center;
+  background-size: 100%;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* stack from top */
+  align-items: flex-start;      /* align left */
+  padding: 1.5rem 2rem;
+  text-align: left;
+}
+
+.card-front h2 {
+  position: absolute;
+  top: 1rem;          /* push to top */
+  left: 50%;
+  transform: translateX(-50%); /* center horizontally only */
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  
+}
+.card-front p {
+  align-self: center;       /* 👈 center the tagline only */
+  margin: 2rem 0 0;
+  font-size: 1rem;
+  color: #555;
+  text-align: center;       /* text centered inside its own width */
+}
+
+.card-back {
+  background: url("bod.png");
+  background-repeat: no-repeat;         /* don’t repeat */
+  background-position: center;
+  background-size: 100%;
+  transform: rotateY(180deg);
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.card-back h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.card-back .subtitle {
+  margin: 0.2rem 0 1rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  text-align: left;
+}
+
+.contact-list li {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.contact-list a {
+  color: #333;              /* dark grey, matches text */
+  text-decoration: none;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  
+}
+
+.contact-list a:hover {
+  color: #2b4f72;
+  text-decoration: underline;
+}
+
+.card-back .tagline {
+  margin-top: auto; /* pushes tagline to bottom */
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+}
+
+
+
+
+
 
 }
 
