@@ -3,59 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Noah Trane | Portfolio</title>
+
+  <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-
-<!-- NAVBAR -->
+  <!-- ================= NAVBAR ================= -->
   <header>
     <nav class="navbar">
       <h1 class="logo" data-i18n="header"></h1>
 
+      <!-- Navigation Links -->
       <ul class="nav-links">
-        
         <li><a href="progress.html" data-i18n="Coding-projects"></a></li>
         <li><a href="progress.html" data-i18n="Research"></a></li>
         <li><a href="progress.html" data-i18n="Experience"></a></li>
         <li><a href="progress.html" data-i18n="Electronics"></a></li>
-        <li><a data-i18n="CV" href="CV.pdf" target="_blank"></a></li>
-        <li><a href="progress.html" data-i18n="Contact""></a></li>
+        <li><a href="CV.pdf" target="_blank" data-i18n="CV"></a></li>
+        <li><a href="progress.html" data-i18n="Contact"></a></li>
+
+        <!-- Dropdown Menu -->
         <li class="dropdown">
-            <button class="drop-btn">
-             <p data-i18n="More"></p> <span class="arrow">▼</span>
-            </button>
-            <ul class="drop-menu">
-                <li><a href="progress.html" data-i18n="Personal"></a></li>
-                <li><a href="progress.html">Hobbies</a></li>
-                <li><a href="progress.html">Blog</a></li>
-                <li><a href="progress.html">Random Stuff</a></li>
-                <li><a data-i18n="contact"></a></li>
-              <li><a href="donations.html" data-i18n="donations"></a></li>
-            </ul>
-          </li>
+          <button class="drop-btn">
+            <p data-i18n="More"></p> <span class="arrow">▼</span>
+          </button>
+          <ul class="drop-menu">
+            <li><a href="progress.html" data-i18n="Personal"></a></li>
+            <li><a href="progress.html">Hobbies</a></li>
+            <li><a href="progress.html">Blog</a></li>
+            <li><a href="progress.html">Random Stuff</a></li>
+            <li><a data-i18n="contact"></a></li>
+            <li><a href="donations.html" data-i18n="donations"></a></li>
+          </ul>
+        </li>
       </ul>
 
+      <!-- Right Side: Socials, Hamburger, Language -->
       <div class="navbar-right">
+
+        <!-- Social Links -->
         <div class="social-links">
-          <a href="https://www.linkedin.com/in/noahtrane" target="_blank">
-            <img src="linkedin.png" alt="LinkedIn">
-          </a>
-          <a href="https://github.com/noahtrane" target="_blank">
-            <img src="github.png" alt="GitHub">
-          </a>
-          <a href="https://www.instagram.com/noah_trane/" target="_blank">
-            <img src="instagram.png" alt="Instagram">
-          </a>
+          <a href="https://www.linkedin.com/in/noahtrane" target="_blank"><img src="linkedin.png" alt="LinkedIn"></a>
+          <a href="https://github.com/noahtrane" target="_blank"><img src="github.png" alt="GitHub"></a>
+          <a href="https://www.instagram.com/noah_trane/" target="_blank"><img src="instagram.png" alt="Instagram"></a>
         </div>
-        
-        <!-- NEW: hamburger menu button -->
+
+        <!-- Hamburger Menu -->
         <button class="hamburger">☰</button>
 
-
+        <!-- Language Switcher -->
         <div class="lang-switcher">
           <button class="lang-btn">
             <img src="uk.png" alt="UK" class="flag main-flag">
@@ -70,9 +69,10 @@
     </nav>
   </header>
 
-  
-
+  <!-- ================= MAIN CONTENT ================= -->
   <main>
+
+    <!-- HERO -->
     <section class="hero"></section>
 
     <!-- ABOUT ME -->
@@ -81,121 +81,107 @@
       <p data-i18n="about"></p>
     </section>
 
-
     <!-- CODING PROJECTS -->
     <section id="projects" class="projects">
       <h2 data-i18n="coding_title"></h2>
-
       <div class="project-scroll">
+
+        <!-- Basketball Game -->
         <a href="https://github.com/noahtrane/Basketball-game" target="_blank" class="project-card">
           <img src="basketball2.png" alt="MATLAB Game Screenshot">
           <h3 data-i18n="basketball_title"></h3>
           <p data-i18n="basketball"></p>
         </a>
 
-
-
-        <a href="https://github.com/noahtrane/Spotify-wrapped" class="project-card" target="_blank">
+        <!-- Spotify Wrapped -->
+        <a href="https://github.com/noahtrane/Spotify-wrapped" target="_blank" class="project-card">
           <img src="spotify.jpg" alt="Spotify project screenshot">
           <h3 data-i18n="spotify_title"></h3>
           <p data-i18n="spotify"></p>
         </a>
 
-         
-
+        <!-- More Projects -->
         <a href="https://github.com/noahtrane" target="_blank" class="project-card">
           <img src="poker.jpg" alt="Placeholder">
           <h3 data-i18n="and-more-title"></h3>
           <p data-i18n="and-more"></p>
         </a>
 
-
-
-
-
       </div>
     </section>
 
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <h2 data-i18n-placeholder="contact"></h2>
 
-  <section id="contact" class="contact">
-    <h2 data-i18n-placeholder="contact"> </h2>
-    
-    <form class="contact-form" action="mailto:noah.trane.contact@gmail.com" method="post" enctype="text/plain">
-      <div class="form-row">
-        <div class="form-left">
-          <input type="text" name="name" data-i18n-placeholder="placeholder_name" required>
-          <input type="email" name="email" data-i18n-placeholder="placeholder_email" required>
-          <input type="tel" name="phone" data-i18n-placeholder="placeholder_phone">
+      <!-- Contact Form -->
+      <form class="contact-form" action="mailto:noah.trane.contact@gmail.com" method="post" enctype="text/plain">
+        <div class="form-row">
+
+          <!-- Left Inputs -->
+          <div class="form-left">
+            <input type="text" name="name" data-i18n-placeholder="placeholder_name" required>
+            <input type="email" name="email" data-i18n-placeholder="placeholder_email" required>
+            <input type="tel" name="phone" data-i18n-placeholder="placeholder_phone">
+          </div>
+
+          <!-- Right Inputs -->
+          <div class="form-right">
+            <textarea name="message" data-i18n-placeholder="placeholder_message" required></textarea>
+          </div>
         </div>
-        <div class="form-right">
-          <textarea name="message" data-i18n-placeholder="placeholder_message" required></textarea>
+
+        <!-- Submit Button -->
+        <div class="form-submit">
+          <button type="submit" class="btn" data-i18n="send"></button>
+        </div>
+      </form>
+
+      <!-- Contact Links -->
+      <div class="contact-links">
+        <a href="mailto:noah.trane.contact@gmail.com"><img src="email.png" alt="email"></a>
+        <a href="https://github.com/noahtrane" target="_blank"><img src="github.png" alt="github"></a>
+        <a href="https://www.linkedin.com/in/noahtrane/" target="_blank"><img src="linkedin.png" alt="linkedin"></a>
+        <a href="https://www.instagram.com/noah_trane/" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+      </div>
+    </section>
+
+    <!-- ================= BUSINESS CARD ================= -->
+    <div class="card-overlay"></div>
+    <div class="card-container" id="cardContainer">
+      <div class="card">
+
+        <!-- Front -->
+        <div class="card-face card-front">
+          <h2 data-i18n="name"></h2>
+          <p data-i18n="bio"></p>
+          <ul class="contact-list">
+            <li data-i18n="address"></li>
+            <li><a href="mailto:noah.trane.contact@gmail.com">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/noahtrane" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/noahtrane" target="_blank">GitHub</a></li>
+            <li><a href="https://www.instagram.com/noah_trane/" target="_blank">Instagram</a></li>
+            <li><a href="CV.pdf" target="_blank">View Resume</a></li>
+          </ul>
+        </div>
+
+        <!-- Back -->
+        <div class="card-face card-back">
+          <p class="tagline">“Creative coder & problem solver.”</p>
         </div>
 
       </div>
-      <div class="form-submit">
-        <button type="submit" class="btn" data-i18n="send"></button>
-      </div>
-    </form>
-
-    <div class="contact-links">
-      <a href="mailto:noah.trane.contact@gmail.com">
-        <img src="email.png" alt="email">
-      </a>
-      <a href="https://github.com/noahtrane" target="_blank">
-        <img src="github.png" alt="github">
-      </a>
-      <a href="https://www.linkedin.com/in/noahtrane/" target="_blank">
-        <img src="linkedin.png" alt="linkedin">
-      </a>
-      <a href="https://www.instagram.com/noah_trane/" target="_blank">
-        <img src="instagram.png" alt="Instagram">
-      </a>
     </div>
-  </section>
-
-
-  <!-- Business Card Widget -->
-  <div class="card-overlay"></div>
-
-  <div class="card-container" id="cardContainer">
-    <div class="card">
-      <!-- FRONT (blank white side) -->
-      <div class="card-face card-front">
-        <h2 data-i18n="name"></h2>
-        <p data-i18n="bio"></p>
-      <ul class="contact-list">
-      <li data-i18n="address"></li>
-      <li><a href="mailto:noah.trane.contact@gmail.com">Email</a></li>
-      <li><a href="https://www.linkedin.com/in/noahtrane" target="_blank">LinkedIn</a></li>
-      <li><a href="https://github.com/noahtrane" target="_blank">GitHub</a></li>
-      <li><a href="https://www.instagram.com/noah_trane/" target="_blank">Instagram</a></li>
-      <li><a href="CV.pdf" target="_blank">View Resume</a></li>
-    </ul>
-      </div>
-
-      <!-- BACK (info side) -->
-  <div class="card-face card-back">
-
-
-
-    <p class="tagline">“Creative coder & problem solver.”</p>
-  </div>
-
-
-
-
   </main>
 </body>
 </html>
 
-
+<!-- ================= SCRIPTS ================= -->
 <script>
-
   // --- NAVBAR SCROLLING --- //
   const navbar = document.querySelector('.navbar');
   let isScrolled = false;
 
-  // Smooth scroll toggle (only fires when state changes)
   window.addEventListener('scroll', () => {
     if (window.scrollY > 10 && !isScrolled) {
       navbar.classList.add('scrolled');
@@ -214,9 +200,7 @@
     navLinks.classList.toggle('show');
   });
 
-
-  // --- MORE MENU OPENING SYSTEM //
-
+  // --- DROPDOWN MENU --- //
   const dropBtn = document.querySelector('.drop-btn');
   const dropMenu = document.querySelector('.drop-menu');
 
@@ -225,7 +209,6 @@
     dropBtn.classList.toggle('active');
   });
 
-  // close if clicking outside
   document.addEventListener('click', (e) => {
     if (!dropBtn.contains(e.target) && !dropMenu.contains(e.target)) {
       dropMenu.classList.remove('show');
@@ -239,7 +222,7 @@
       const res = await fetch("translations.json");
       const translations = await res.json();
 
-      // Update normal text
+      // Update text
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
         if (translations[lang] && translations[lang][key]) {
@@ -255,28 +238,23 @@
         }
       });
 
-      // remember language in localStorage
       localStorage.setItem("preferredLang", lang);
     } catch (err) {
       console.error("Could not load translations:", err);
     }
   }
 
-
-
-  // --- language switching logic ---
+  // --- LANGUAGE SWITCHER --- //
   const langBtn = document.querySelector('.lang-btn');
   const langMenu = document.querySelector('.lang-menu');
-  const mainFlag = langBtn.querySelector('.flag'); // main flag <img>
+  const mainFlag = langBtn.querySelector('.flag');
   const menuFlags = document.querySelectorAll('.lang-menu .flag');
 
-  // toggle dropdown
   langBtn.addEventListener('click', () => {
     langMenu.classList.toggle('show');
     langBtn.classList.toggle('active');
   });
 
-  // close dropdown if clicking outside
   document.addEventListener('click', (e) => {
     if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
       langMenu.classList.remove('show');
@@ -284,59 +262,83 @@
     }
   });
 
-  // when a flag is clicked
+  // Switch language on flag click
   menuFlags.forEach(flag => {
     flag.parentElement.addEventListener('click', () => {
       const lang = flag.alt === "UK" ? "en" : "fr";
-
-      // update main flag image
       mainFlag.src = flag.src;
       mainFlag.alt = flag.alt;
-
-      // load translations
       loadTranslations(lang);
 
-      // close dropdown
+      currentLang = lang;
+      applySimpleValidationMessage();
+
       langMenu.classList.remove('show');
       langBtn.classList.remove('active');
     });
   });
 
-const savedLang = localStorage.getItem("preferredLang");
-const defaultLang = savedLang || "en"; // force English if nothing saved
-loadTranslations(defaultLang);
+  // Default Language
+  const savedLang = localStorage.getItem("preferredLang");
+  const defaultLang = savedLang || "en";
+  loadTranslations(defaultLang);
+  mainFlag.src = defaultLang === "en" ? "uk.png" : "france.png";
+  mainFlag.alt = defaultLang === "en" ? "UK" : "France";
 
-// also update the main flag when loading
-mainFlag.src = defaultLang === "en" ? "uk.png" : "france.png";
-mainFlag.alt = defaultLang === "en" ? "UK" : "France";
+  // --- FORM VALIDATION --- //
+  let currentLang = localStorage.getItem("preferredLang") || "en";
 
+  function applySimpleValidationMessage() {
+    const msg = currentLang === "fr"
+      ? "Veuillez remplir ce champ."
+      : "Please fill in this form.";
 
-const cardContainer = document.getElementById("cardContainer");
-const card = cardContainer.querySelector(".card");
-const overlay = document.querySelector(".card-overlay");
+    document.querySelectorAll(".contact-form [required]").forEach(el => {
+      el.addEventListener("invalid", function () {
+        this.setCustomValidity(msg);
+      }, { capture: true });
 
-cardContainer.addEventListener("click", (e) => {
-  // ✅ don’t flip if a link (or child of link) is clicked
-  if (e.target.tagName === "A") {
-    return;
+      el.addEventListener("input", function () {
+        this.setCustomValidity("");
+      });
+    });
   }
 
-  if (!cardContainer.classList.contains("open")) {
-    cardContainer.classList.add("open");
-    overlay.classList.add("active");
-  } else if (!card.classList.contains("flipped")) {
-    card.classList.add("flipped");
-  } else {
+  document.addEventListener("DOMContentLoaded", applySimpleValidationMessage);
+
+  const form = document.querySelector(".contact-form");
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        form.reportValidity();
+      }
+    });
+  }
+
+  // --- BUSINESS CARD --- //
+  const cardContainer = document.getElementById("cardContainer");
+  const card = cardContainer.querySelector(".card");
+  const overlay = document.querySelector(".card-overlay");
+
+  cardContainer.addEventListener("click", (e) => {
+    if (e.target.tagName === "A") return;
+
+    if (!cardContainer.classList.contains("open")) {
+      cardContainer.classList.add("open");
+      overlay.classList.add("active");
+    } else if (!card.classList.contains("flipped")) {
+      card.classList.add("flipped");
+    } else {
+      card.classList.remove("flipped");
+    }
+  });
+
+  overlay.addEventListener("click", () => {
+    cardContainer.classList.remove("open");
     card.classList.remove("flipped");
-  }
-});
-
-// Close when clicking outside card
-overlay.addEventListener("click", () => {
-  cardContainer.classList.remove("open");
-  card.classList.remove("flipped");
-  overlay.classList.remove("active");
-});
-
+    overlay.classList.remove("active");
+  });
 </script>
+
 
