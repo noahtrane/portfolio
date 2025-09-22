@@ -42,7 +42,7 @@
         </div>
         
         <!-- NEW: hamburger menu button -->
-        <button class="hamburger">☰</button>
+        <button class="hamburger"><span></span></button>
 
 
         <div class="lang-switcher">
@@ -268,31 +268,55 @@ document.getElementById("restartBtn").addEventListener("click", () => {
 </html>
 
 
-
+<!-- ================= SCRIPTS ================= -->
 <script>
   // --- NAVBAR SCROLLING --- //
   const navbar = document.querySelector('.navbar');
   let isScrolled = false;
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 10 && !isScrolled) {
+    const y = window.scrollY;
+
+    if (!isScrolled && y > 40) {     // scroll down enough before adding
       navbar.classList.add('scrolled');
       isScrolled = true;
-    } else if (window.scrollY <= 10 && isScrolled) {
+    } else if (isScrolled && y < 10) { // scroll back up high before removing
       navbar.classList.remove('scrolled');
       isScrolled = false;
     }
+
+  
   });
 
   // --- HAMBURGER MENU --- //
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
 
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+    hamburger.classList.toggle('active'); // add this line
+  });
+
+
+  // --- DROPDOWN MENU --- //
+// --- DROPDOWN MENU --- //
+  document.querySelectorAll('.drop-btn').forEach(dropBtn => {
+    const dropMenu = dropBtn.nextElementSibling;
+
+    dropBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent immediate close
+      dropMenu.classList.toggle('show');
+      dropBtn.classList.toggle('active');
     });
-  }
+
+    document.addEventListener('click', (e) => {
+      if (!dropBtn.contains(e.target) && !dropMenu.contains(e.target)) {
+        dropMenu.classList.remove('show');
+        dropBtn.classList.remove('active');
+      }
+    });
+  });
+
 
   // --- TRANSLATION SYSTEM --- //
   async function loadTranslations(lang) {
@@ -300,7 +324,7 @@ document.getElementById("restartBtn").addEventListener("click", () => {
       const res = await fetch("translations.json");
       const translations = await res.json();
 
-      // Update normal text
+      // Update text
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
         if (translations[lang] && translations[lang][key]) {
@@ -322,52 +346,99 @@ document.getElementById("restartBtn").addEventListener("click", () => {
     }
   }
 
-  // --- LANGUAGE SWITCHER LOGIC --- //
+  // --- LANGUAGE SWITCHER --- //
   const langBtn = document.querySelector('.lang-btn');
   const langMenu = document.querySelector('.lang-menu');
-  const mainFlag = langBtn ? langBtn.querySelector('.flag') : null;
+  const mainFlag = langBtn.querySelector('.flag');
   const menuFlags = document.querySelectorAll('.lang-menu .flag');
 
-  if (langBtn && langMenu && mainFlag) {
-    // toggle dropdown
-    langBtn.addEventListener('click', () => {
-      langMenu.classList.toggle('show');
-      langBtn.classList.toggle('active');
+  langBtn.addEventListener('click', () => {
+    langMenu.classList.toggle('show');
+    langBtn.classList.toggle('active');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
+      langMenu.classList.remove('show');
+      langBtn.classList.remove('active');
+    }
+  });
+
+  // Switch language on flag click
+  menuFlags.forEach(flag => {
+    flag.parentElement.addEventListener('click', () => {
+      const lang = flag.alt === "UK" ? "en" : "fr";
+      mainFlag.src = flag.src;
+      mainFlag.alt = flag.alt;
+      loadTranslations(lang);
+
+      currentLang = lang;
+      applySimpleValidationMessage();
+
+      langMenu.classList.remove('show');
+      langBtn.classList.remove('active');
     });
+  });
 
-    // close dropdown if clicking outside
-    document.addEventListener('click', (e) => {
-      if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
-        langMenu.classList.remove('show');
-        langBtn.classList.remove('active');
-      }
-    });
+  // Default Language
+  const savedLang = localStorage.getItem("preferredLang");
+  const defaultLang = savedLang || "en";
+  loadTranslations(defaultLang);
+  mainFlag.src = defaultLang === "en" ? "uk.png" : "france.png";
+  mainFlag.alt = defaultLang === "en" ? "UK" : "France";
 
-    // when a flag is clicked
-    menuFlags.forEach(flag => {
-      flag.parentElement.addEventListener('click', () => {
-        const lang = flag.alt === "UK" ? "en" : "fr";
+  // --- FORM VALIDATION --- //
+  let currentLang = localStorage.getItem("preferredLang") || "en";
 
-        // update main flag image
-        mainFlag.src = flag.src;
-        mainFlag.alt = flag.alt;
+  function applySimpleValidationMessage() {
+    const msg = currentLang === "fr"
+      ? "Veuillez remplir ce champ."
+      : "Please fill in this form.";
 
-        // load translations
-        loadTranslations(lang);
+    document.querySelectorAll(".contact-form [required]").forEach(el => {
+      el.addEventListener("invalid", function () {
+        this.setCustomValidity(msg);
+      }, { capture: true });
 
-        // close dropdown
-        langMenu.classList.remove('show');
-        langBtn.classList.remove('active');
+      el.addEventListener("input", function () {
+        this.setCustomValidity("");
       });
     });
-
-    // load saved or default language
-    const savedLang = localStorage.getItem("preferredLang");
-    const defaultLang = savedLang || "en";
-    loadTranslations(defaultLang);
-
-    // set main flag correctly
-    mainFlag.src = defaultLang === "en" ? "uk.png" : "france.png";
-    mainFlag.alt = defaultLang === "en" ? "UK" : "France";
   }
+
+  document.addEventListener("DOMContentLoaded", applySimpleValidationMessage);
+
+  const form = document.querySelector(".contact-form");
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        form.reportValidity();
+      }
+    });
+  }
+
+  // --- BUSINESS CARD --- //
+  const cardContainer = document.getElementById("cardContainer");
+  const card = cardContainer.querySelector(".card");
+  const overlay = document.querySelector(".card-overlay");
+
+  cardContainer.addEventListener("click", (e) => {
+    if (e.target.tagName === "A") return;
+
+    if (!cardContainer.classList.contains("open")) {
+      cardContainer.classList.add("open");
+      overlay.classList.add("active");
+    } else if (!card.classList.contains("flipped")) {
+      card.classList.add("flipped");
+    } else {
+      card.classList.remove("flipped");
+    }
+  });
+
+  overlay.addEventListener("click", () => {
+    cardContainer.classList.remove("open");
+    card.classList.remove("flipped");
+    overlay.classList.remove("active");
+  });
 </script>

@@ -16,7 +16,6 @@ body {
   background-repeat: no-repeat, no-repeat;
   background-position: center top, center;
   background-size: auto 700px, cover; /* 👈 fixed height */
-  
 }
 
 
@@ -42,7 +41,7 @@ header {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   margin: 0.5rem 1rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   transition: all 1s ease;
 }
 
@@ -127,8 +126,8 @@ header {
 }
 
 .navbar .social-links img {
-  vertical-align: middle; /* aligns with text if inline */
-  margin-top: 2px;       /* 👈 adjust up/down as needed */
+  vertical-align: middle; 
+  margin-top: 2px;
 }
 
 .nav-links {
@@ -218,38 +217,190 @@ header {
 .lang-switcher { display: none; }
 .navbar .social-links { display: none; }
 
-/* Hamburger (mobile only by default) */
+/* ==== MOBILE NAV POLISH — OVERRIDES (paste after your CSS) ==== */
+
+/* =====================
+   HAMBURGER BUTTON
+   ===================== */
 .hamburger {
   position: absolute;
-  left: 0.5rem;
-  top: 44%;
+  left: 0.6rem;
+  top: 50%;
   transform: translateY(-50%);
-  font-size: 1.8rem;
-  background: none;
-  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   cursor: pointer;
-  color: black; /* or any color you want */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  z-index: 1100;
+  color: white;
 }
 
-/* nav links when menu toggled */
+.hamburger span,
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease, bottom 0.3s ease;
+  position: absolute;
+}
+
+.hamburger span { position: relative; }
+.hamburger::before { top: 13px; }
+.hamburger::after  { bottom: 13px; }
+
+.hamburger.active span { opacity: 0; }
+.hamburger.active::before {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+.hamburger.active::after {
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.navbar.scrolled .hamburger {
+  color: #333;
+  background: rgba(74,111,165,0.10);
+  border-color: rgba(74,111,165,0.30);
+  
+}
+
+/* =====================
+   MOBILE NAV MENU
+   ===================== */
+.nav-links { display: none; }
+
 .nav-links.show {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 100%;
+  top: 100%;   /* directly below navbar */
   left: 0;
   right: 0;
-  background: white;
-  padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 2000;
+  background: #fff;
+  
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 0.5rem 0;
+  border-radius: 12px;
 }
+
+.nav-links.show li {
+  border-bottom: 1px solid #eee;
+}
+.nav-links.show li:last-child {
+  border-bottom: none;
+}
+
+.nav-links.show a,
+.nav-links.show button.drop-btn {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-links.show a:hover,
+.nav-links.show button.drop-btn:hover {
+  background: #f5f5f5;
+  color: #4a6fa5;
+}
+
+/* disable underline animation inside dropdown */
+.nav-links.show a::after { display: none; }
+
+/* =====================
+   "MORE" SUBMENU
+   ===================== */
+/* Mobile dropdown when scrolled */
+.navbar.scrolled .nav-links.show .drop-menu {
+  background: #fff;
+  border-radius: 0;
+  border-top: 1px solid #ddd;
+  box-shadow: none;
+}
+
+.navbar.scrolled .nav-links.show {
+  position: fixed;
+  width: 100vw;        /* kill any margin inherited */
+  border-radius: 0;
+  left: -1px;
+  transition: 2s;
+  
+}
+
+.nav-links.show .drop-menu.show {
+  display: flex;
+}
+
+.nav-links.show .drop-menu li {
+  border-bottom: 1px solid #eee;
+}
+.nav-links.show .drop-menu li:last-child {
+  border-bottom: none;
+}
+
+.nav-links.show .drop-menu li a {
+  padding: 0.8rem 2rem;  /* indented look */
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.nav-links.show .drop-menu li a:hover {
+  background: #f0f0f0;
+  color: #4a6fa5;
+}
+
+/* arrow rotation */
+.nav-links.show .drop-btn .arrow {
+  transition: transform 0.25s ease;
+}
+.nav-links.show .drop-btn.active .arrow {
+  transform: rotate(180deg);
+}
+/* MOBILE drop-menu when navbar is scrolled */
+.navbar.scrolled .drop-menu {
+  background: #fff;
+  border-radius: 0px;
+  border-top: 1px solid #ddd;
+  box-shadow: none;
+}
+
+.navbar.scrolled .nav-links.show .drop-menu li a {
+  color: #333;
+}
+
+.navbar.scrolled .nav-links.show .drop-menu li a:hover {
+  background: #f5f5f5;
+  color: #4a6fa5;
+}
+
+
+
 
 .drop-menu,
 .lang-menu {
   position: static;
   box-shadow: none;
 }
-
 
 
 /* CONTACT FORM (mobile stacked) */
@@ -259,8 +410,6 @@ header {
 .form-right {
   flex: unset;
 }
-
-
 
 /* LANGUAGUE SWITCHER */
 .lang-switcher { position: relative; }
@@ -325,7 +474,6 @@ section {
 .projects {
   padding: 3rem 2rem;
   background: transparent;
-  
 }
 
 .projects h2 {
@@ -451,9 +599,8 @@ input, textarea, button {
                       linear-gradient(135deg, #dceefb, #91e5f7fb);
     background-repeat: no-repeat, no-repeat;
     background-position: center top, center;
-    background-size: auto 700px, cover; /* 👈 fixed height */
+    background-size: auto 700px, cover;
   }
-
 }
 
 
@@ -465,164 +612,6 @@ input, textarea, button {
     grid-template-columns: repeat(2, 1fr);
   }
   .social-links { display: flex; gap: 2rem; }
-
-  /* ====== BUSINESS CARD WIDGET (MINIMAL) ====== */
-
-.card-container,
-.card-front h2, 
-.card-front .address,
-.card-front .bio,
-.card-front a,
-.quote{
-  display: block;
-}
-
-
-/* overlay */
-.card-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 999;
-}
-.card-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* container */
-.card-container {
-  position: fixed;
-  bottom: -250px; /* push further down */
-  right: -380px;  /* push further left */
-  width: 525px;
-  height: 300px;
-  cursor: pointer;
-  z-index: 1000;
-  transition: right 0.6s ease, bottom 0.6s ease, transform 0.6s ease;
-}
-
-
-/* open = slide into center */
-.card-container.open {
-  bottom: 50%;
-  right: 50%;
-  transform: translate(50%, 50%);
-}
-
-/* card */
-.card {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.6s ease;
-  background: #fff;
-  border-radius: 0; /* square corners */
-  border-radius: 12px;
-}
-
-/* flip state */
-.card.flipped {
-  transform: rotateY(180deg);
-}
-
-/* faces */
-.card-face {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-}
-
-/* front = blank white */
-.card-front {
-  background: url("radcam.png");
-  background-repeat: no-repeat;         /* don’t repeat */
-  background-position: bottom;
-  background-size: 100%;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;  /* stack from top */
-  align-items: flex-start;      /* align left */
-  padding: 1.5rem 2rem;
-  text-align: left;
-}
-
-.card-front h2 {
-  text-align: center;
-  align-self: center;
-  top: 1rem;          /* push to top */
-  margin: 0;
-  font-size: 1.6rem;
-  font-weight: 600;
-  
-}
-
-.card-front .bio {
-  align-self: center;       /* 👈 center the tagline only */
-  margin: 0.5rem 0 0;
-  font-size: 1rem;
-  color: #555;
-  text-align: center;       /* text centered inside its own width */
-}
-
-.card-front .address {
-  align-self: center;       /* 👈 center the tagline only */
-  margin: 0.5rem 0 -0.5rem;
-  font-size: 0.8rem;
-  color: #555;
-  text-align: center;       /* text centered inside its own width */
-}
-
-.card-front a{
-  text-align: left;
-  font-size: 0.8rem;
-  color: #555;
-}
-
-.card-back {
-  background: url("bod.png");
-  background-repeat: no-repeat;         /* don’t repeat */
-  background-position: center;
-  background-size: 100%;
-  transform: rotateY(180deg);
-  padding: 1.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  
-  text-align: left;
-  align-items: center; 
-}
-
-.card-back .quote {
-  position: relative;
-  align-items: center; 
-  z-index: 1;
-  font-size: 1rem;
-  font-style: italic;
-  text-align: center;
-  color: #505050; /* or #eee */
-  max-width: 90%;
-  line-height: 1.4;
-}
-
-.card-back .quote::after {
-  content: "— Alan Kay"; 
-  display: block;
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
-  font-style: normal;
-  color: #000000;
-}
-
 }
 
 
@@ -634,7 +623,7 @@ input, textarea, button {
     background-image: url("background.jpg"), linear-gradient(135deg, #dceefb, #91e5f7fb);
     background-repeat: no-repeat, no-repeat;
     background-position: center top, center;
-    background-size: auto 700px, cover; /* 👈 fixed height */
+    background-size: auto 700px, cover;
   }
 
   .hamburger { display: none; }
@@ -650,9 +639,9 @@ input, textarea, button {
   }
 
   #about {
-  padding-top: 16rem;
-  margin-top: 16rem;
-}
+    padding-top: 16rem;
+    margin-top: 16rem;
+  }
   .logo {
     margin: 0;
     font-size: 1.5rem;
@@ -671,61 +660,203 @@ input, textarea, button {
   .form-left { flex: 1; }
 
   .drop-menu {
-  position: absolute;
-  top: 120%;
-  left: 0;
-  background: #121212;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  min-width: 160px;
-  padding: 0.5rem 0;
-  display: none; /* default hidden */
-}
+    position: absolute;
+    top: 120%;
+    left: 0;
+    background: #121212;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    min-width: 160px;
+    padding: 0.5rem 0;
+    display: none;
+  }
 
   .drop-menu.show {
     display: block;
   }
 
+  /* ====== BUSINESS CARD WIDGET (MINIMAL) ====== */
 
-.contact-list {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0 0;
-  
-}
+  .card-container,
+  .card-front h2, 
+  .card-front .address,
+  .card-front .bio,
+  .card-front a,
+  .quote{
+    display: block;
+  }
 
-.contact-list li {
-  margin: 0.3rem 0;
-  font-size: 0.95rem;
-  color: #444;
-}
+  /* overlay */
+  .card-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+  }
+  .card-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
 
-.contact-list a {
-  color: #333;              /* dark grey, matches text */
-  text-decoration: none;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  
-}
+  /* container */
+  .card-container {
+    position: fixed;
+    bottom: -250px;
+    right: -380px;
+    width: 525px;
+    height: 300px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: right 0.6s ease, bottom 0.6s ease, transform 0.6s ease;
+  }
 
-.contact-list a:hover {
-  color: #2b4f72;
-  text-decoration: underline;
-}
+  /* open = slide into center */
+  .card-container.open {
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+  }
 
-.card-back .tagline {
-  margin-top: auto; /* pushes tagline to bottom */
-  font-size: 0.9rem;
-  color: #666;
-  font-style: italic;
-  text-align: center;
-}
+  /* card */
+  .card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    background: #fff;
+    border-radius: 12px;
+  }
 
+  /* flip state */
+  .card.flipped {
+    transform: rotateY(180deg);
+  }
 
+  /* faces */
+  .card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+  }
 
+  /* front = blank white */
+  .card-front {
+    background: url("radcam.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100%;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1.5rem 2rem;
+    text-align: left;
+  }
 
+  .card-front h2 {
+    text-align: center;
+    align-self: center;
+    top: 1rem;
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
 
+  .card-front .bio {
+    align-self: center;
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+  }
 
+  .card-front .address {
+    align-self: center;
+    margin: 0.5rem 0 -0.5rem;
+    font-size: 0.8rem;
+    color: #555;
+    text-align: center;
+  }
+
+  .card-front a{
+    text-align: left;
+    font-size: 0.8rem;
+    color: #555;
+  }
+
+  .card-back {
+    background: url("bod.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    transform: rotateY(180deg);
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: center; 
+  }
+
+  .card-back .quote {
+    position: relative;
+    align-items: center; 
+    z-index: 1;
+    font-size: 1rem;
+    font-style: italic;
+    text-align: center;
+    color: #505050;
+    max-width: 90%;
+    line-height: 1.4;
+  }
+
+  .card-back .quote::after {
+    content: "— Alan Kay"; 
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    font-style: normal;
+    color: #000000;
+  }
+
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+
+  .contact-list li {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    color: #444;
+  }
+
+  .contact-list a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .contact-list a:hover {
+    color: #2b4f72;
+    text-decoration: underline;
+  }
+
+  .card-back .tagline {
+    margin-top: auto;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+  }
 }
 
 
@@ -733,7 +864,5 @@ input, textarea, button {
    LARGER LAPTOP & DESKTOPS
    -------------------- */
 @media (min-width: 1404px) {
-
-.navbar .social-links { display: flex; gap: 2rem; }
-
+  .navbar .social-links { display: flex; gap: 2rem; }
 }
