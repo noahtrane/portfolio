@@ -51,7 +51,9 @@ header {
   border-radius: 0;
   border-left: none;
   border-right: none;
-  background: rgba(255, 255, 255, 0.95);
+   background: linear-gradient(135deg,
+  rgba(255, 255, 255, 0.8),
+  rgba(236, 236, 236, 0.8));
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -155,12 +157,12 @@ header {
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-links img:hover {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -431,6 +433,15 @@ input, textarea, button {
   opacity: 0.8;
 }
 
+.card-container,
+.card-front h2, 
+.card-front .address,
+.card-front .bio,
+.card-front a, 
+.quote{
+  display: none;
+}
+
 /* --------------------
    LARGE PHONE SMALL TABLET
    -------------------- */
@@ -454,69 +465,18 @@ input, textarea, button {
     grid-template-columns: repeat(2, 1fr);
   }
   .social-links { display: flex; gap: 2rem; }
+
+  /* ====== BUSINESS CARD WIDGET (MINIMAL) ====== */
+
+.card-container,
+.card-front h2, 
+.card-front .address,
+.card-front .bio,
+.card-front a,
+.quote{
+  display: block;
 }
 
-
-/* --------------------
-   DESKTOP & LAPTOP
-   -------------------- */
-@media (min-width: 1188px) {
-  body {
-    background-image: url("background.jpg"), linear-gradient(135deg, #dceefb, #91e5f7fb);
-    background-repeat: no-repeat, no-repeat;
-    background-position: center top, center;
-    background-size: auto 700px, cover; /* 👈 fixed height */
-  }
-
-  .hamburger { display: none; }
-
-  .nav-links { display: flex; gap: 1rem; }
-  .navbar { display: flex; gap: 2rem; }
-  .lang-switcher { display: inline-block; }
-    
-  .lang-switcher { display: inline-block; }
-
-  .project-scroll {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  #about {
-  padding-top: 16rem;
-  margin-top: 16rem;
-}
-  .logo {
-    margin: 0;
-    font-size: 1.5rem;
-  }
-
-  .navbar {
-    margin: 1rem 2rem;
-    padding: 0.75rem 2rem;
-  }
-
-  .form-row {
-    flex-direction: row;
-    align-items: stretch;
-  }
-  .form-right { flex: 2; }
-  .form-left { flex: 1; }
-
-  .drop-menu {
-  position: absolute;
-  top: 120%;
-  left: 0;
-  background: #121212;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  min-width: 160px;
-  padding: 0.5rem 0;
-  display: none; /* default hidden */
-}
-
-  .drop-menu.show {
-    display: block;
-  }
-/* ====== BUSINESS CARD WIDGET (MINIMAL) ====== */
 
 /* overlay */
 .card-overlay {
@@ -585,7 +545,7 @@ input, textarea, button {
 .card-front {
   background: url("radcam.png");
   background-repeat: no-repeat;         /* don’t repeat */
-  background-position: center;
+  background-position: bottom;
   background-size: 100%;
   color: #333;
   display: flex;
@@ -597,21 +557,35 @@ input, textarea, button {
 }
 
 .card-front h2 {
-  position: absolute;
+  text-align: center;
+  align-self: center;
   top: 1rem;          /* push to top */
-  left: 50%;
-  transform: translateX(-50%); /* center horizontally only */
   margin: 0;
   font-size: 1.6rem;
   font-weight: 600;
   
 }
-.card-front p {
+
+.card-front .bio {
   align-self: center;       /* 👈 center the tagline only */
-  margin: 2rem 0 0;
+  margin: 0.5rem 0 0;
   font-size: 1rem;
   color: #555;
   text-align: center;       /* text centered inside its own width */
+}
+
+.card-front .address {
+  align-self: center;       /* 👈 center the tagline only */
+  margin: 0.5rem 0 -0.5rem;
+  font-size: 0.8rem;
+  color: #555;
+  text-align: center;       /* text centered inside its own width */
+}
+
+.card-front a{
+  text-align: left;
+  font-size: 0.8rem;
+  color: #555;
 }
 
 .card-back {
@@ -623,27 +597,101 @@ input, textarea, button {
   padding: 1.5rem 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  
   text-align: left;
+  align-items: center; 
 }
 
-.card-back h3 {
-  margin: 0;
-  font-size: 1.4rem;
-  color: #333;
-}
-
-.card-back .subtitle {
-  margin: 0.2rem 0 1rem;
+.card-back .quote {
+  position: relative;
+  align-items: center; 
+  z-index: 1;
   font-size: 1rem;
-  color: #555;
+  font-style: italic;
+  text-align: center;
+  color: #505050; /* or #eee */
+  max-width: 90%;
+  line-height: 1.4;
 }
+
+.card-back .quote::after {
+  content: "— Alan Kay"; 
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  font-style: normal;
+  color: #000000;
+}
+
+}
+
+
+/* --------------------
+   DESKTOP & LAPTOP
+   -------------------- */
+@media (min-width: 1188px) {
+  body {
+    background-image: url("background.jpg"), linear-gradient(135deg, #dceefb, #91e5f7fb);
+    background-repeat: no-repeat, no-repeat;
+    background-position: center top, center;
+    background-size: auto 700px, cover; /* 👈 fixed height */
+  }
+
+  .hamburger { display: none; }
+
+  .nav-links { display: flex; gap: 1rem; }
+  .navbar { display: flex; gap: 2rem; }
+  .lang-switcher { display: inline-block; }
+    
+  .lang-switcher { display: inline-block; }
+
+  .project-scroll {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  #about {
+  padding-top: 16rem;
+  margin-top: 16rem;
+}
+  .logo {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .navbar {
+    margin: 1rem 2rem;
+    padding: 0.75rem 2rem;
+  }
+
+  .form-row {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .form-right { flex: 2; }
+  .form-left { flex: 1; }
+
+  .drop-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #121212;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  min-width: 160px;
+  padding: 0.5rem 0;
+  display: none; /* default hidden */
+}
+
+  .drop-menu.show {
+    display: block;
+  }
+
 
 .contact-list {
   list-style: none;
   padding: 0;
   margin: 1rem 0 0;
-  text-align: left;
+  
 }
 
 .contact-list li {

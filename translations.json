@@ -51,8 +51,9 @@
     "phone": "+353 87 912 0617",
 
 
+    "coding_title": "Examples of my coding projects",
 
-    "coding_title": "Examples of my coding projects"
+    "quote": "The best way to predict the future is to invent it"
   },
   "fr": {
 
@@ -108,6 +109,8 @@
     "address": "Collège St John, Oxford, Royaume-Uni",
     "phone": "+353 87 912 0617",
 
-    "coding_title": "Exemples de mes projets de codage"
+    "coding_title": "Exemples de mes projets de codage",
+
+    "quote": "La meilleure façon de prédire l’avenir est de l’inventer"
   }
 }

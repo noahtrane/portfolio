@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noah Trane | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+<!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <h1 class="logo" data-i18n="header">Noah Trane's Website</h1>
+
+      <ul class="nav-links">
+        
+        <li><a data-i18n="Coding-projects"></a></li>
+        <li><a data-i18n="Research"></a></li>
+        <li><a data-i18n="Experience"></a></li>
+        <li><a data-i18n="Electronics"></a></li>
+        <li><a data-i18n="CV" href="CV.pdf" target="_blank"></a></li>
+        <li><a data-i18n="Contact""></a></li>
+        <li class="dropdown">
+            <button class="drop-btn">
+             <p data-i18n="More"></p> <span class="arrow">▼</span>
+            </button>
+            <ul class="drop-menu">
+                <li><a data-i18n="Personal"></a></li>
+                <li><a href="#hobby">Hobbies</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#random">Random Stuff</a></li>
+                <li><a data-i18n="contact"></a></li>
+              <li><a href="donations.html" data-i18n="donations"></a></li>
+            </ul>
+          </li>
+      </ul>
+
+      <div class="navbar-right">
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/noahtrane" target="_blank">
+            <img src="linkedin.png" alt="LinkedIn">
+          </a>
+          <a href="https://github.com/noahtrane" target="_blank">
+            <img src="github.png" alt="GitHub">
+          </a>
+          <a href="https://www.instagram.com/noah_trane/" target="_blank">
+            <img src="instagram.png" alt="Instagram">
+          </a>
+        </div>
+
+        <div class="lang-switcher">
+          <button class="lang-btn">
+            <img src="uk.png" alt="UK" class="flag main-flag">
+            <span class="arrow">▼</span>
+          </button>
+          <ul class="lang-menu">
+            <li><button><img src="uk.png" alt="UK" class="flag"></button></li>
+            <li><button><img src="france.png" alt="France" class="flag"></button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+
+  <main>
+
+    <!-- ABOUT ME -->
+    <section id="about">
+      <h2 data-i18n="about_title">About Me</h2>
+      <p data-i18n="about"> bio </p>
+    </section>
+
+
+    <!-- CODING PROJECTS -->
+    <section id="projects" class="projects">
+      <h2 data-i18n="coding_title">Examples of my coding projects</h2>
+
+      <div class="project-scroll">
+        <div class="project-card">
+          <img src="basketball2.png" alt="MATLAB Game Screenshot">
+          <h3 data-i18n="basketball_title">Physics Puzzle Game</h3>
+          <p data-i18n="basketball">A game built in MATLAB with custom graphics and physics logic.</p>
+        </div>
+
+        <div class="project-card">
+          <img src="poker.jpg" alt="Poker">
+          <h3>Project Coming Soon</h3>
+          <p>More projects will be added here as I build them.</p>
+        </div>
+
+        <div class="project-card">
+          <img src="coming-soon.png" alt="Placeholder">
+          <h3>Project Coming Soon</h3>
+          <p>Stay tuned for updates.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="contact" class="contact">
+      <h2>Contact Me</h2>
+      <p>If you'd like to get in touch, feel free to send me a message or connect with me on social media. (Note this emails to my work email, for other types of emails please visit my presonal page or message me on my social medias)</p>
+
+      <form class="contact-form" action="mailto:noah.trane.work@gmail.com" method="post" enctype="text/plain">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+        </div>
+
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+
+      <div class="contact-links">
+        <a href="mailto:noah.trane.contact@gmail.com">📧 Email</a>
+        <a href="https://www.linkedin.com/in/no%C3%A9-trane-200bab194/" target="_blank">💼 LinkedIn</a>
+        <a href="https://github.com/yourusername" target="_blank">💻 GitHub</a>
+      </div>
+    </section>
+
+
+  </main>
+</body>
+</html>
+
+
+<script>
+
+  // --- NAVBAR SCROLLING --- //
+  const navbar = document.querySelector('.navbar');
+  let isScrolled = false;
+
+  // Smooth scroll toggle (only fires when state changes)
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10 && !isScrolled) {
+      navbar.classList.add('scrolled');
+      isScrolled = true;
+    } else if (window.scrollY <= 10 && isScrolled) {
+      navbar.classList.remove('scrolled');
+      isScrolled = false;
+    }
+  });
+
+  // --- MORE MENU OPENING SYSTEM //
+
+  const dropBtn = document.querySelector('.drop-btn');
+  const dropMenu = document.querySelector('.drop-menu');
+
+  dropBtn.addEventListener('click', () => {
+    dropMenu.classList.toggle('show');
+    dropBtn.classList.toggle('active');
+  });
+
+  // close if clicking outside
+  document.addEventListener('click', (e) => {
+    if (!dropBtn.contains(e.target) && !dropMenu.contains(e.target)) {
+      dropMenu.classList.remove('show');
+      dropBtn.classList.remove('active');
+    }
+  });
+
+  // --- TRANSLATION SYSTEM --- //
+  async function loadTranslations(lang) {
+    try {
+      const res = await fetch("translations.json");
+      const translations = await res.json();
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      // remember language in localStorage
+      localStorage.setItem("preferredLang", lang);
+    } catch (err) {
+      console.error("Could not load translations:", err);
+    }
+  }
+
+  // --- language switching logic ---
+  const langBtn = document.querySelector('.lang-btn');
+  const langMenu = document.querySelector('.lang-menu');
+  const mainFlag = langBtn.querySelector('.flag'); // main flag <img>
+  const menuFlags = document.querySelectorAll('.lang-menu .flag');
+
+  // toggle dropdown
+  langBtn.addEventListener('click', () => {
+    langMenu.classList.toggle('show');
+    langBtn.classList.toggle('active');
+  });
+
+  // close dropdown if clicking outside
+  document.addEventListener('click', (e) => {
+    if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
+      langMenu.classList.remove('show');
+      langBtn.classList.remove('active');
+    }
+  });
+
+  // when a flag is clicked
+  menuFlags.forEach(flag => {
+    flag.parentElement.addEventListener('click', () => {
+      const lang = flag.alt === "UK" ? "en" : "fr";
+
+      // update main flag image
+      mainFlag.src = flag.src;
+      mainFlag.alt = flag.alt;
+
+      // load translations
+      loadTranslations(lang);
+
+      // close dropdown
+      langMenu.classList.remove('show');
+      langBtn.classList.remove('active');
+    });
+  });
+
+const savedLang = localStorage.getItem("preferredLang");
+const defaultLang = savedLang || "en"; // force English if nothing saved
+loadTranslations(defaultLang);
+
+// also update the main flag when loading
+mainFlag.src = defaultLang === "en" ? "uk.png" : "france.png";
+mainFlag.alt = defaultLang === "en" ? "UK" : "France";
+</script>
+

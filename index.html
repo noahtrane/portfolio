@@ -154,20 +154,22 @@
         <!-- Front -->
         <div class="card-face card-front">
           <h2 data-i18n="name"></h2>
-          <p data-i18n="bio"></p>
+          <p class="bio" data-i18n="bio"></p>
+          <p class="address" data-i18n="address"></p>
           <ul class="contact-list">
-            <li data-i18n="address"></li>
-            <li><a href="mailto:noah.trane.contact@gmail.com">Email</a></li>
-            <li><a href="https://www.linkedin.com/in/noahtrane" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/noahtrane" target="_blank">GitHub</a></li>
-            <li><a href="https://www.instagram.com/noah_trane/" target="_blank">Instagram</a></li>
-            <li><a href="CV.pdf" target="_blank">View Resume</a></li>
+            
+            
+            <li><a href="mailto:noah.trane.work@gmail.com">noah.trane.work@gmail.com</a></li>
+            <li><a href="mailto:noah.trane.work@gmail.com">noe.trane@sjc.ox.ac.uk</a></li>
+            <li><a href="https://www.noahtrane.com">noahtrane.com</a></li>
+            <li><a href="tel:+447438757367">+44 7438 757367</a></li>
+       
           </ul>
         </div>
 
         <!-- Back -->
         <div class="card-face card-back">
-          <p class="tagline">“Creative coder & problem solver.”</p>
+          <p class="quote" data-i18n="quote"></p>
         </div>
 
       </div>
@@ -183,13 +185,17 @@
   let isScrolled = false;
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 10 && !isScrolled) {
+    const y = window.scrollY;
+
+    if (!isScrolled && y > 40) {     // scroll down enough before adding
       navbar.classList.add('scrolled');
       isScrolled = true;
-    } else if (window.scrollY <= 10 && isScrolled) {
+    } else if (isScrolled && y < 10) { // scroll back up high before removing
       navbar.classList.remove('scrolled');
       isScrolled = false;
     }
+
+  
   });
 
   // --- HAMBURGER MENU --- //
