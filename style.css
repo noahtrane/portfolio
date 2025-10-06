@@ -11,11 +11,12 @@ body {
   line-height: 1.6;
   padding: 0;
 
-  background-image: url("phonebackground.jpg"),
-                    linear-gradient(135deg, #dceefb, #91e5f7fb);
-  background-repeat: no-repeat, no-repeat;
-  background-position: center top, center;
-  background-size: auto 700px, cover; /* 👈 fixed height */
+    background-image: url("phonebackground.jpg"),
+                      linear-gradient(135deg, #dceefb, #91e5f7fb);
+    background-repeat: no-repeat, no-repeat;
+    background-position: center top, center;
+    background-size: auto 700px, cover;
+
 }
 
 
@@ -27,6 +28,7 @@ header {
   z-index: 1000;
   color: white;
 }
+
 
 /* Navbar header */
 
@@ -50,13 +52,14 @@ header {
   border-radius: 0;
   border-left: none;
   border-right: none;
-   background: linear-gradient(135deg,
+   /*background: linear-gradient(135deg,
   rgba(255, 255, 255, 0.8),
-  rgba(236, 236, 236, 0.8));
+  rgba(236, 236, 236, 0.8));*/
+  background: white;
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  
 }
 
 /* Nav links, hover, underline */
@@ -77,13 +80,28 @@ header {
   transition: width 0.3s;
 }
 
-.navbar.scrolled .nav-links a {
+/* --- Top-level links only when scrolled --- */
+.navbar.scrolled > .nav-links > li > a {
   color: #333;
 }
-.navbar.scrolled .nav-links a:hover {
+.navbar.scrolled > .nav-links > li > a:hover {
   color: #4a6fa5;
 }
+.navbar.scrolled > .nav-links > li > a::after {
+  background: #4a6fa5;
+}
 
+/* --- Dropdown links always white on black --- */
+.drop-menu li a {
+  color: white;
+}
+.drop-menu li a:hover {
+  color: #e5f7fb;
+  background: rgba(255, 255, 255, 0.1);
+}
+.drop-menu li a::after {
+  display: none;
+}
 .navbar.scrolled .nav-links a::after {
   background: #4a6fa5;
 }
@@ -176,6 +194,8 @@ header {
 }
 
 /* Dropdown */
+
+
 .dropdown { position: relative; }
 .drop-btn {
   background: transparent;
@@ -201,6 +221,24 @@ header {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   min-width: 160px;
 }
+
+.drop-menu {
+  background: #121212;          /* always black */
+  border-radius: 8px;           /* keep rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 0.5rem 0;
+  min-width: 160px;
+
+  position: absolute;
+  top: 120%;
+  left: 100%;                    /* position relative to "More" */
+  transform: translateX(-25%);  /* center it */
+  display: none;                /* hidden by default */
+  z-index: 9999;
+}
+
+
+
 .drop-menu li a {
   display: block;
   padding: 0.5rem 1rem;
@@ -278,6 +316,10 @@ header {
   
 }
 
+.site-title{
+  display: none;
+}
+
 /* =====================
    MOBILE NAV MENU
    ===================== */
@@ -328,38 +370,22 @@ header {
 .nav-links.show a::after { display: none; }
 
 /* =====================
-   "MORE" SUBMENU
+   FIX "MORE" SUBMENU ON MOBILE
    ===================== */
-/* Mobile dropdown when scrolled */
-.navbar.scrolled .nav-links.show .drop-menu {
-  background: #fff;
-  border-radius: 0;
-  border-top: 1px solid #ddd;
-  box-shadow: none;
-}
 
-.navbar.scrolled .nav-links.show {
-  position: fixed;
-  width: 100vw;        /* kill any margin inherited */
-  border-radius: 0;
-  left: -1px;
-  transition: 2s;
-  
-}
-
-.nav-links.show .drop-menu.show {
-  display: flex;
-}
-
-.nav-links.show .drop-menu li {
-  border-bottom: 1px solid #eee;
-}
-.nav-links.show .drop-menu li:last-child {
-  border-bottom: none;
+.nav-links.show .drop-menu {
+  position: static;        /* don't float */
+  transform: none;         /* reset weird shift */
+  background: #fff;        /* match mobile menu */
+  box-shadow: none;        /* no floating shadow */
+  border-radius: 0;        /* flush edges */
+  width: 100%;             /* full width inside */
+  padding: 0;              /* reset spacing */
 }
 
 .nav-links.show .drop-menu li a {
-  padding: 0.8rem 2rem;  /* indented look */
+  display: block;
+  padding: 0.9rem 2rem;    /* indent submenu */
   font-size: 0.95rem;
   color: #444;
 }
@@ -369,31 +395,28 @@ header {
   color: #4a6fa5;
 }
 
-/* arrow rotation */
-.nav-links.show .drop-btn .arrow {
-  transition: transform 0.25s ease;
-}
-.nav-links.show .drop-btn.active .arrow {
-  transform: rotate(180deg);
-}
 /* MOBILE drop-menu when navbar is scrolled */
-.navbar.scrolled .drop-menu {
-  background: #fff;
-  border-radius: 0px;
-  border-top: 1px solid #ddd;
-  box-shadow: none;
-}
 
-.navbar.scrolled .nav-links.show .drop-menu li a {
+
+
+
+
+/* Base (mobile first) */
+.mobile-lang {
+  display: block;
+}
+.mobile-lang a {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
   color: #333;
+  text-decoration: none;
 }
-
-.navbar.scrolled .nav-links.show .drop-menu li a:hover {
+.mobile-lang a:hover {
   background: #f5f5f5;
   color: #4a6fa5;
 }
-
-
 
 
 .drop-menu,
@@ -458,10 +481,51 @@ header {
 .lang-btn.active .arrow { transform: rotate(180deg); }
 
 /* About section */
+
+
+/* ABOUT SECTION */
 #about {
-  padding-top: 17rem;
-  margin-top: 17rem;
+  margin-top: 31.25rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 5rem 2rem;
+  text-align: center;
+  margin-bottom: -5rem;
 }
+
+#about h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+#about p {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.8;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+/* About card (glassy effect) */
+.about-card {
+  background: linear-gradient(135deg, #ffffff, #ececec);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 16px;
+  padding: 1.5rem 2rem 2rem; /* less top padding */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  transition: transform 0.5s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+}
+
+
 
 /* Main sections */
 section {
@@ -601,6 +665,36 @@ input, textarea, button {
     background-position: center top, center;
     background-size: auto 700px, cover;
   }
+
+  #about {
+    margin-top: 30rem;
+  }
+
+  .lang-switcher { display: block; }
+
+  .navbar .logo{
+    color:transparent;
+  }
+
+  .navbar.scrolled .logo{
+    color:transparent;
+  }
+
+  .site-title {
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  color: white; /* or #333 when scrolled */
+}
+
+.navbar.scrolled .site-title {
+  color: #333;
+}
 }
 
 
@@ -620,11 +714,17 @@ input, textarea, button {
    -------------------- */
 @media (min-width: 1188px) {
   body {
-    background-image: url("background.jpg"), linear-gradient(135deg, #dceefb, #91e5f7fb);
+    background-image: url("background.jpg"), linear-gradient(135deg, #dceefb, rgb(232, 251, 255));
     background-repeat: no-repeat, no-repeat;
     background-position: center top, center;
     background-size: auto 700px, cover;
   }
+
+    #about {
+    margin-top: 30rem;
+  }
+
+  .mobile-lang { display: none; }
 
   .hamburger { display: none; }
 
@@ -638,10 +738,7 @@ input, textarea, button {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  #about {
-    padding-top: 16rem;
-    margin-top: 16rem;
-  }
+
   .logo {
     margin: 0;
     font-size: 1.5rem;
@@ -651,6 +748,19 @@ input, textarea, button {
     margin: 1rem 2rem;
     padding: 0.75rem 2rem;
   }
+
+  .navbar .logo{
+    color:white;
+  }
+
+  .navbar.scrolled .logo{
+    color:black;
+  }
+
+  .site-title {
+  display: none;
+}
+
 
   .form-row {
     flex-direction: row;
@@ -857,6 +967,67 @@ input, textarea, button {
     font-style: italic;
     text-align: center;
   }
+
+/* container lives docked bottom-right by default */
+
+
+/* open = center the card (flip happens on .card) */
+
+
+/* collapsed = slide the whole widget down and fade it
+   IMPORTANT: we never apply .collapsed at the same time as .open (see JS) */
+.card-container.collapsed {
+  transform: translateY(140%);
+  opacity: 0;
+  pointer-events: none;
+  transition: 3s;
+}
+
+/* --- Arrow button behavior --- */
+.card-toggle {
+  position: fixed;
+  right: 10px;
+  bottom: 150px;
+  transition: bottom 0.6s ease;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* When card is open → hide arrow */
+.card-container.open ~ .card-toggle {
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.card-toggle .arrow {
+  font-size: 1.5rem;
+  color: rgba(80, 80, 80, 0.3);  /* grey + 60% opacity */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Optional hover effect: darken slightly */
+.card-toggle:hover .arrow {
+  color: rgba(80, 80, 80, 0.85);
+}
+
+/* arrow positions */
+.card-toggle.down { bottom: 50px; } /* card visible (docked) */
+.card-toggle.up   { bottom: 0px; } /* card collapsed (or moving) */
+
+.card-toggle.up .arrow {
+  transform: rotate(180deg);
+}
+
+
+
 }
 
 

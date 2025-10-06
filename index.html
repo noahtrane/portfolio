@@ -13,7 +13,10 @@
 
   <!-- ================= NAVBAR ================= -->
   <header>
+    
+
     <nav class="navbar">
+      <h1 class="site-title" data-i18n="header"></h1>
       <h1 class="logo" data-i18n="header"></h1>
 
       <!-- Navigation Links -->
@@ -23,6 +26,8 @@
       <li><a href="progress.html" data-i18n="Experience">Experience</a></li>
       <li><a href="progress.html" data-i18n="Electronics">Electronics</a></li>
       <li><a href="CV.pdf" target="_blank" data-i18n="CV">CV</a></li>
+
+      <li><a class="mobile-lang" href="#" id="langToggle" data-i18n="Language">Language</a></li>
 
       <li class="dropdown">
         <button class="drop-btn">
@@ -35,7 +40,7 @@
           <li><a href="progress.html">Blog</a></li>
           <li><a href="progress.html">Random Stuff</a></li>
           <li><a href="#contact" data-i18n="contact">Contact</a></li>
-          <li><a href="donations.html" data-i18n="donations">Donations</a></li>
+          
         </ul>
       </li>
     </ul>
@@ -76,10 +81,21 @@
     <section class="hero"></section>
 
     <!-- ABOUT ME -->
-    <section id="about">
-      <h2 data-i18n="about_title"></h2>
-      <p data-i18n="about"></p>
-    </section>
+  
+<section id="about">
+  
+
+  <div class="about-card">
+    <h2 data-i18n="about_title">About Me</h2>
+    <p data-i18n="about">
+      I’m Noah — a curious builder who loves coding, research, and turning ideas
+      into projects. From electronics to algorithms, I enjoy working at the
+      intersection of creativity and technology. Always exploring, always
+      learning.
+    </p>
+  </div>
+</section>
+
 
     <!-- CODING PROJECTS -->
     <section id="projects" class="projects">
@@ -106,6 +122,8 @@
           <h3 data-i18n="and-more-title"></h3>
           <p data-i18n="and-more"></p>
         </a>
+
+        
 
       </div>
     </section>
@@ -146,37 +164,45 @@
       </div>
     </section>
 
-    <!-- ================= BUSINESS CARD ================= -->
-    <div class="card-overlay"></div>
-    <div class="card-container" id="cardContainer">
-      <div class="card">
 
-        <!-- Front -->
-        <div class="card-face card-front">
-          <h2 data-i18n="name"></h2>
-          <p class="bio" data-i18n="bio"></p>
-          <p class="address" data-i18n="address"></p>
-          <ul class="contact-list">
-            
-            
-            <li><a href="mailto:noah.trane.work@gmail.com">noah.trane.work@gmail.com</a></li>
-            <li><a href="mailto:noah.trane.work@gmail.com">noe.trane@sjc.ox.ac.uk</a></li>
-            <li><a href="https://www.noahtrane.com">noahtrane.com</a></li>
-            <li><a href="tel:+447438757367">+44 7438 757367</a></li>
-       
-          </ul>
-        </div>
 
-        <!-- Back -->
-        <div class="card-face card-back">
-          <p class="quote" data-i18n="quote"></p>
-        </div>
+<!-- ================= BUSINESS CARD ================= -->
 
-      </div>
+
+<div class="card-overlay"></div>
+
+<div class="card-container" id="cardContainer">
+  <div class="card">
+
+    <!-- Front -->
+    <div class="card-face card-front">
+      <h2 data-i18n="name">Noah Trane</h2>
+      <p class="bio" data-i18n="bio">Student, coder, builder.</p>
+      <p class="address" data-i18n="address">Oxford, UK</p>
+      <ul class="contact-list">
+        <li><a href="mailto:noah.trane.work@gmail.com">noah.trane.work@gmail.com</a></li>
+        <li><a href="mailto:noe.trane@sjc.ox.ac.uk">noe.trane@sjc.ox.ac.uk</a></li>
+        <li><a href="https://www.noahtrane.com">noahtrane.com</a></li>
+        <li><a href="tel:+447438757367">+44 7438 757367</a></li>
+      </ul>
     </div>
+
+    <!-- Back -->
+    <div class="card-face card-back">
+      <p class="quote" data-i18n="quote">"The best way to predict the future is to invent it."</p>
+    </div>
+
+  </div>
+</div>
+
+<button class="card-toggle down" id="cardToggle">
+  <span class="arrow">∨</span>
+</button>
   </main>
 </body>
 </html>
+
+
 
 <!-- ================= SCRIPTS ================= -->
 <script>
@@ -187,15 +213,13 @@
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
 
-    if (!isScrolled && y > 40) {     // scroll down enough before adding
+    if (!isScrolled && y > 40) {
       navbar.classList.add('scrolled');
       isScrolled = true;
-    } else if (isScrolled && y < 10) { // scroll back up high before removing
+    } else if (isScrolled && y < 10) {
       navbar.classList.remove('scrolled');
       isScrolled = false;
     }
-
-  
   });
 
   // --- HAMBURGER MENU --- //
@@ -204,17 +228,15 @@
 
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('show');
-    hamburger.classList.toggle('active'); // add this line
+    hamburger.classList.toggle('active');
   });
 
-
   // --- DROPDOWN MENU --- //
-// --- DROPDOWN MENU --- //
   document.querySelectorAll('.drop-btn').forEach(dropBtn => {
     const dropMenu = dropBtn.nextElementSibling;
 
     dropBtn.addEventListener('click', (e) => {
-      e.stopPropagation(); // prevent immediate close
+      e.stopPropagation();
       dropMenu.classList.toggle('show');
       dropBtn.classList.toggle('active');
     });
@@ -227,14 +249,12 @@
     });
   });
 
-
   // --- TRANSLATION SYSTEM --- //
   async function loadTranslations(lang) {
     try {
       const res = await fetch("translations.json");
       const translations = await res.json();
 
-      // Update text
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
         if (translations[lang] && translations[lang][key]) {
@@ -242,7 +262,6 @@
         }
       });
 
-      // Update placeholders
       document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
         const key = el.getAttribute("data-i18n-placeholder");
         if (translations[lang] && translations[lang][key]) {
@@ -261,6 +280,9 @@
   const langMenu = document.querySelector('.lang-menu');
   const mainFlag = langBtn.querySelector('.flag');
   const menuFlags = document.querySelectorAll('.lang-menu .flag');
+  const langToggle = document.getElementById("langToggle");
+
+  let currentLang = localStorage.getItem("preferredLang") || "en";
 
   langBtn.addEventListener('click', () => {
     langMenu.classList.toggle('show');
@@ -278,28 +300,40 @@
   menuFlags.forEach(flag => {
     flag.parentElement.addEventListener('click', () => {
       const lang = flag.alt === "UK" ? "en" : "fr";
-      mainFlag.src = flag.src;
-      mainFlag.alt = flag.alt;
-      loadTranslations(lang);
-
-      currentLang = lang;
-      applySimpleValidationMessage();
-
+      updateLanguage(lang, flag.src, flag.alt);
       langMenu.classList.remove('show');
       langBtn.classList.remove('active');
     });
   });
 
-  // Default Language
+  // Switch language on mobile link click
+  langToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    const newLang = currentLang === "en" ? "fr" : "en";
+    const newSrc = newLang === "en" ? "uk.png" : "france.png";
+    const newAlt = newLang === "en" ? "UK" : "France";
+    updateLanguage(newLang, newSrc, newAlt);
+  });
+
+  function updateLanguage(lang, flagSrc, flagAlt) {
+    loadTranslations(lang);
+    mainFlag.src = flagSrc;
+    mainFlag.alt = flagAlt;
+    currentLang = lang;
+    localStorage.setItem("preferredLang", lang);
+    applySimpleValidationMessage();
+  }
+
+  // Default Language on load
   const savedLang = localStorage.getItem("preferredLang");
   const defaultLang = savedLang || "en";
-  loadTranslations(defaultLang);
-  mainFlag.src = defaultLang === "en" ? "uk.png" : "france.png";
-  mainFlag.alt = defaultLang === "en" ? "UK" : "France";
+  updateLanguage(
+    defaultLang,
+    defaultLang === "en" ? "uk.png" : "france.png",
+    defaultLang === "en" ? "UK" : "France"
+  );
 
   // --- FORM VALIDATION --- //
-  let currentLang = localStorage.getItem("preferredLang") || "en";
-
   function applySimpleValidationMessage() {
     const msg = currentLang === "fr"
       ? "Veuillez remplir ce champ."
@@ -351,6 +385,25 @@
     card.classList.remove("flipped");
     overlay.classList.remove("active");
   });
+
+  // --- CARD TOGGLE BUTTON --- //
+cardToggle.addEventListener("click", () => {
+  const isCollapsed = cardContainer.classList.toggle("collapsed");
+
+  if (isCollapsed) {
+    // card is collapsed → arrow up
+    cardToggle.classList.remove("down");
+    cardToggle.classList.add("up");
+  } else {
+    // card is visible → arrow down
+    cardToggle.classList.remove("up");
+    cardToggle.classList.add("down");
+  }
+});
+
+
+
+
+
+
 </script>
-
-
