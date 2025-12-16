@@ -1,0 +1,63 @@
+{
+  "en": {
+
+    "__comment": "NAVBAR",
+
+    "site_name": "Noah Trane's Website",
+    "about": "About me",
+    "project": "Projects",
+    "experience": "Experience",
+    "resume": "Resume",
+    "personal": "Off Hours",
+    "contact": "Contact",
+    "skills": "Compentences",
+
+    "___comment": "About me Front page",
+    "about_title": "About Me {",
+    "about_text": "My name is Noah Trane, and I’m a second-year Engineering Science student at the University of Oxford. I’m passionate about many areas of engineering — from electronics and aeronautics to coding, machine learning, and mathematics. I love creating and building things, including this very website. Right now, I’m seeking opportunities to grow through internships and collaborations, where I can apply my skills and learn from real-world challenges. Outside of academics and coding, you’ll often find me playing football, the piano, or rock climbing — I enjoy tackling challenges both on the field and off.",
+    
+    "____comment": "HERO",
+    "name": "Noah Trane",
+    "bio": "Engineering Science Student | University of Oxford",
+    "quote": "Live in the Present but Design for the Future",
+
+    "_____comment": "PROJECT",
+    "project_title": "Here is what I've built",
+    "view_specs": "View Specs ->",
+    "view_archive": "[ ARCHIVE: VIEW ALL PROJECTS ]",
+    "project-1-title": "Autonomous Chess Manipulator",
+    "project-2-title": "Number 2",
+    "project-3-title": "Number 3"
+},
+  "fr": {
+
+    "__comment": "NAVBAR",
+
+    "site_name": "Le Site de Noé Trane",
+    "about": "Sur moi",
+    "project": "Projets",
+    "experience": "Expérience",
+    "resume": "CV",
+    "personal": "Hors Heures",
+    "contact": "Contact",
+    "skills": "Compétences",
+
+
+    "___comment": "About me Front page",
+    "about_title": "Sur Moi {",
+    "about_text": "Je m’appelle Noé Trane et je suis étudiant en deuxième année de sciences de l’ingénieur à l’Université d’Oxford. Je suis passionné par de nombreux domaines de l’ingénierie — de l’électronique et l’aéronautique à la programmation, l’apprentissage automatique et les mathématiques. J’aime concevoir et construire des choses, y compris ce site web. En ce moment, je recherche des opportunités de développement à travers des stages et des collaborations, où je pourrai mettre en pratique mes compétences et apprendre grâce à des défis concrets. En dehors de mes études et de la programmation, vous me trouverez souvent en train de jouer au football, du piano ou de faire de l’escalade — j’aime relever des défis, qu’ils soient sur le terrain ou ailleurs.",
+
+    "____comment": "HERO",
+    "name": "Noé Trane",
+    "bio": "Étudiant en Sciences de l’Ingénierie | Université d’Oxford",
+    "quote": "Vis dans le présent mais conçois pour l’avenir",
+
+    "_____comment": "PROJECT",
+    "project_title": "Voici ce que j'ai construit",
+    "view_specs": "Voir les spécifications ->",
+    "view_archive": "[ ARCHIVES : VOIR TOUS LES PROJETS ]",
+    "project-1-title": "Manipulateur d'Échecs Autonome",
+    "project-2-title": "Numero 2",
+    "project-3-title": "Numero 3"
+  }
+}
